@@ -11,9 +11,12 @@ size: less than 120 mb
 currently sadly you have to build it yourself, the Dockerfile is included
 
 # How do i prepare my Raspberry Pi
-you have to do two things:
+you have to do three things:
+- physically connect the mh_z19
 - enable the UART serial device
 - disable (!) any console that is using said device
+## How do i physically connect the mh_z19 / cables?
+- see https://pypi.org/project/mh-z19/ for now, i will update the description here later.
 ## How do i enable the UART serial device and disable the console ?
 depends on which distribution you are running, but in dietpi you can do it via the following steps:
 ```
