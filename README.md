@@ -1,5 +1,5 @@
 # mh_z19-dockerized
-dockerized co2 sensor using mh_z19, based on debian:stable-slim
+dockerized co2 sensor which reports to MQTT using mh_z19, based on debian:stable-slim
 size: less than 120 mb
 
 # How-To
