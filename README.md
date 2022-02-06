@@ -57,7 +57,7 @@ There are a few environment variables that are configured in /init:
 
 ## How can i get it into HomeAssistant ?
 add the following to your configuration.yaml:
-``´
+```
  - platform: "mqtt"
     state_topic: "custom/<LABEL>/value"
     json_attributes_topic: "custom/<LABEL>/state"
@@ -65,7 +65,7 @@ add the following to your configuration.yaml:
     device_class: "carbon_dioxide"
     name: "Co2 Room A"
     unique_id: "co2rooma"
-´``
+
 and replace <LABEL> with the content of the environment variable above (or 'co2pi' without the quotes for default)
 Also 'name' and 'unique_id' are of course variable as you wish.
 
