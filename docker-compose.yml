@@ -1,0 +1,16 @@
+version: "3.0"
+services:
+  co2pi:
+    build: .
+    image: gelse/co2pi
+    container_name: co2pi
+    privileged: true
+    environment:
+      - LABEL=co2pi4
+      - INTERVAL=120
+      - MQTT_SERVER=mqtt.gelse.local
+#      - HEALTHCHECKURL=
+      - SERIAL_DEVICE=/dev/ttyS0
+    volumes:
+      - /dev/ttyS0:/dev/ttyS0
+    restart: unless-stopped
