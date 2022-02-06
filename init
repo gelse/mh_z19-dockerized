@@ -1,0 +1,24 @@
+#!/bin/sh
+
+[ -z "${LABEL}" ] && LABEL=co2pi
+echo "initialized LABEL to ${LABEL}"
+
+[ -z "${INTERVAL}" ] && INTERVAL=120
+echo "initialized INTERVAL to ${INTERVAL}"
+
+[ -z "${MQTT_SERVER}" ] && echo "missing ENV variable MQTT_SERVER" && exit 1
+echo "initialized MQTT_SERVER to ${MQTT_SERVER}"
+
+if [ -z "${HEALTHCHECKURL}" ]; then
+  echo "no healthcheck"
+else
+  echo "initialized HEALTHCHECKURL to ${HEALTHCHECKURL}"
+fi
+
+[ -z "${SERIAL_DEVICE}" ] && SERIAL_DEVICE=/dev/serial0
+
+
+# TODO test if serial device exists
+# TODO test if read access on serial device
+
+exec "$@"

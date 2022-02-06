@@ -1,0 +1,19 @@
+#!/bin/sh
+while (true) do
+  l_time=$(date +"%d.%m.%Y %H:%M")
+  l_value=$(python3 -m mh_z19 --serial_console_untouched --serial_device "${SERIAL_DEVICE}" --all 2>last_error) || continue
+
+  echo "send CO2 measurement: $l_value at $l_time"
+
+  mosquitto_pub -h $MQTT_SERVER -d -i $LABEL -t custom/$LABEL/state -m "$l_value"
+  mosquitto_pub -h $MQTT_SERVER -d -i $LABEL -t custom/$LABEL/last_update -m "$l_time"
+
+  co2_value=`echo "$l_value" | jq '.co2'`
+  mosquitto_pub -h $MQTT_SERVER -d -i $LABEL -t custom/$LABEL/value -m "$co2_value"
+
+  if ! [ -z "${HEALTHCHECKURL}" ]; then
+    curl -S -s -o /dev/null "${HEALTHCHECKURL}"
+  fi
+
+  sleep $INTERVAL;
+done;
