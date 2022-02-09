@@ -73,3 +73,8 @@ Also 'name' and 'unique_id' are of course variable as you wish.
 run
 `docker run --rm -it -e MQTT_SERVER=<my_mqtt_server> -v /dev/serial0:/dev/serial0 --privileged co2pi /bin/bash`
 then you land in a bash in the container.
+ 
+ ## FAQ
+ 
+ ### Unable to locate package python3-rpi.gpio
+ You are building the container with the wrong target platform, use [buildx](https://docs.docker.com/buildx/working-with-buildx/) to target ARM platform, e.g. `docker buildx build --platform linux/arm/v7 .`
