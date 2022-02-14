@@ -15,8 +15,12 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    tags:
-      - latest
-    dockerfile: ./Dockerfile
+    auto_tag: "true"
+    auto_tag_suffix: linux-arm
+    dockerfile: Dockerfile.arm
     registry: registry.gelse.dev
+  when:
+    event:
+      - push
+      - tag
     
