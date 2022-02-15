@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: linux-arm
+name: linux-arm7
 
 platform:
   arch: arm
@@ -16,11 +16,36 @@ steps:
     password:
       from_secret: docker_password
     auto_tag: "true"
-    auto_tag_suffix: linux-arm
-    dockerfile: Dockerfile.arm
+    auto_tag_suffix: linux-arm7
+    dockerfile: Dockerfile.arm7
     registry: registry.gelse.dev
   when:
     event:
       - push
       - tag
     
+kind: pipeline
+type: docker
+name: linux-arm5
+
+platform:
+  arch: arm
+  os: linux
+
+steps:
+- name: docker
+  image: plugins/docker
+  settings:
+    repo: gelse/mh_z19-dockerized
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    auto_tag: "true"
+    auto_tag_suffix: linux-arm5
+    dockerfile: Dockerfile.arm5
+    registry: registry.gelse.dev
+  when:
+    event:
+      - push
+      - tag
