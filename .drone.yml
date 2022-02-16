@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: linux-arm7
+name: linux-arm64
 
 platform:
   arch: arm64
@@ -16,8 +16,8 @@ steps:
     password:
       from_secret: docker_password
     auto_tag: "true"
-    auto_tag_suffix: linux-arm7
-    dockerfile: Dockerfile.arm7
+    auto_tag_suffix: linux-arm64
+    dockerfile: Dockerfile.arm
     registry: registry.gelse.dev
   when:
     event:
@@ -26,10 +26,10 @@ steps:
     
 kind: pipeline
 type: docker
-name: linux-arm5
+name: linux-arm
 
 platform:
-  arch: arm64
+  arch: arm
   os: linux
 
 steps:
@@ -42,8 +42,8 @@ steps:
     password:
       from_secret: docker_password
     auto_tag: "true"
-    auto_tag_suffix: linux-arm5
-    dockerfile: Dockerfile.arm5
+    auto_tag_suffix: linux-arm
+    dockerfile: Dockerfile.arm
     registry: registry.gelse.dev
   when:
     event:

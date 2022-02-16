@@ -1,4 +1,4 @@
-FROM armv32v5/debian:stable-slim
+FROM debian:stable-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
